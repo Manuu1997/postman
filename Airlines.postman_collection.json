@@ -1,0 +1,123 @@
+{
+	"info": {
+		"_postman_id": "6f805c96-719c-4731-8bca-30561ec63193",
+		"name": "Airlines",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create airlines",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": {{id}},\r\n    \"name\": \"Sri Lankan Airways\",\r\n    \"country\": \"Sri Lanka\",\r\n\"logo\":\"https://upload.wikimedia.org/wikipedia/en/thumb/9/9b/Qatar_Airways_Logo.svg/sri_lanka.png\",\r\n    \"slogan\": \"From Sri Lanka\",\r\n    \"head_quaters\": \"Katunayake, Sri Lanka\",\r\n    \"website\": \"www.srilankaairways.com\",\r\n    \"established\": \"1990\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.instantwebtools.net/v1/airlines",
+					"protocol": "https",
+					"host": [
+						"api",
+						"instantwebtools",
+						"net"
+					],
+					"path": [
+						"v1",
+						"airlines"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create passenger",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"John Doe\",\r\n    \"trips\": 250,\r\n    \"airline\": 5\r\n }\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.instantwebtools.net/v1/passenger",
+					"protocol": "https",
+					"host": [
+						"api",
+						"instantwebtools",
+						"net"
+					],
+					"path": [
+						"v1",
+						"passenger"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "airlines id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.instantwebtools.net/v1/airlines/:id",
+					"protocol": "https",
+					"host": [
+						"api",
+						"instantwebtools",
+						"net"
+					],
+					"path": [
+						"v1",
+						"airlines",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
